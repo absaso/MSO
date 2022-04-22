@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"> 
+<head>
+	<meta charset="UTF-8">
+	<title>MSOApp - Nouveau dossier</title>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+
+<body>
+	<nav class="navbar navbar-expand-sm bg-secondary navbar-dark fixed-top">
+	  <div class="container-fluid">
+	    <ul class="navbar-nav">
+	      <li class="nav-item">
+	        <a class="navbar-brand" th:href=@{/mainPage}><img alt="logo" width="120px" th:src="@{img/logo.png}"></a>
+	      </li>
+	      <li class="nav-item mt-3 ml-3">
+	        <a th:href="@{/AddNewDossier}" class="btn btn-secondary btn-sm mb-2">Nouveau dossier</a>
+	      </li>
+	    </ul>
+	  </div>
+	</nav>
+        <br/><br/><br/>
+        <br/>
+	<div class="container mt-5">
+		<div class="row">
+			<div class="col-lg-8 col-md-8 col-sm-8 container justify-center card">
+				<h1 class="text-center">Ajout d'un nouveau dossier</h1>
+				
+				<div class="card-body">
+					<form th:action="@{/SaveDossier}" th:object="${dossier}" method="POST" >
+						<div class="form-group">
+							<label> Nom du document</label>
+							<input
+							type = "text"
+							name = "libelle"
+							th:field = "*{libelle}"
+							class = "form-control"
+							placeholder="saisir le libellé"
+							/>
+						</div>
+						
+						<div class="form-group">
+							<label> Numéro de classeur</label>
+							<input
+							type = "number"
+							min = "1" max = "1000"
+							name = "numClasseur"
+							th:field = "*{numClasseur}"
+							class = "form-control"
+							placeholder="saisir le numéro"
+							/>
+						</div>
+						
+						<div class="form-group">
+							<label> Domaine</label>
+							<input
+							type = "text"
+							name = "domaine"
+							th:field = "*{domaine}"
+							class = "form-control"
+							placeholder="domaine"
+							/>
+						</div>
+						
+						<div class="form-group">
+							<label> Photo du classeur</label>
+							<input
+							type = "text"
+							name = "photo"
+							th:field = "*{photo}"
+							class = "form-control"
+							placeholder="sélectionner la photo"
+							/>
+						</div>
+						
+						<div class="box-footer text-center">
+							<button type="submit" class="btn btn-success">Enregistrer</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>
